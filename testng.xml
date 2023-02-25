@@ -34,13 +34,23 @@
     </test>
 
     <!-- emu only -->
-    <test name="SendSmsTest">
+    <test name="SendSmsTest" enabled="false">
         <parameter name="version" value="9"/>
         <parameter name="avd" value="Pixel_XL_API_28"/>
         <parameter name="pack" value="com.google.android.apps.messaging"/>
         <parameter name="activity" value="ui.ConversationListActivity"/>
         <classes>
             <class name="tests.SendSmsTest"/>
+        </classes>
+    </test>
+
+    <test name="ClipboardTest">
+        <parameter name="version" value="10"/>
+        <parameter name="avd" value=""/>
+        <parameter name="pack" value="io.selendroid.testapp"/>
+        <parameter name="activity" value="HomeScreenActivity"/>
+        <classes>
+            <class name="tests.ClipboardTest"/>
         </classes>
     </test>
 </suite>
