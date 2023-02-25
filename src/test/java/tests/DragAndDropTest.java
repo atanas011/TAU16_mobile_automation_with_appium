@@ -9,14 +9,12 @@ import org.testng.annotations.Test;
 
 public class DragAndDropTest extends BaseTest {
 
-    public TouchAction actions;
-
     @Test
     public void dragAndDrop() {
         driver.findElement(AppiumBy.accessibilityId("Views")).click();
         driver.findElement(AppiumBy.accessibilityId("Drag and Drop")).click();
 
-        actions = new TouchAction((PerformsTouchActions) driver);
+        var actions = new TouchAction((PerformsTouchActions) driver);
 
         var drag = ElementOption.element(driver.findElement(By.id("drag_dot_1")));
         var drop = ElementOption.element(driver.findElement(By.id("drag_dot_2")));
