@@ -3,6 +3,7 @@ package tests.apptests;
 import org.openqa.selenium.By;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import tests.base.BaseTest;
 
 public class BuiltInAppEmuTest extends BaseTest {
 

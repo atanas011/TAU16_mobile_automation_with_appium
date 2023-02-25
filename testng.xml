@@ -46,13 +46,35 @@
         </classes>
     </test>
 
-    <test name="ClipboardTest">
+    <test name="ClipboardTest" enabled="false">
         <parameter name="version" value="10"/>
         <parameter name="avd" value=""/>
         <parameter name="pack" value="io.selendroid.testapp"/>
         <parameter name="activity" value="HomeScreenActivity"/>
         <classes>
             <class name="tests.apptests.ClipboardTest"/>
+        </classes>
+    </test>
+
+    <test name="LoginTest" enabled="false">
+        <parameter name="version" value="10"/>
+        <parameter name="avd" value=""/>
+        <parameter name="browser" value="Chrome"/>
+        <parameter name="pack" value=""/>
+        <parameter name="activity" value=""/>
+        <classes>
+            <class name="tests.webtests.LoginTest"/>
+        </classes>
+    </test>
+
+    <test name="HybridAppTest">
+        <parameter name="version" value="10"/>
+        <parameter name="avd" value=""/>
+        <parameter name="browser" value=""/>
+        <parameter name="pack" value="io.selendroid.testapp"/>
+        <parameter name="activity" value="HomeScreenActivity"/>
+        <classes>
+            <class name="tests.webtests.HybridAppTest"/>
         </classes>
     </test>
 </suite>

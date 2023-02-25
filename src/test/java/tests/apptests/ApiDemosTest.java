@@ -7,6 +7,7 @@ import io.appium.java_client.touch.offset.PointOption;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
+import tests.base.BaseTest;
 
 public class ApiDemosTest extends BaseTest {
 

@@ -4,6 +4,7 @@ import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import tests.base.BaseTest;
 
 public class ClipboardTest extends BaseTest {
 
