@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="MobileAutomationWithAppium">
+
+    <test name="ApiDemosTest" enabled="false">
+        <parameter name="version" value="10"/>
+        <parameter name="avd" value=""/>
+        <parameter name="pack" value="io.appium.android.apis"/>
+        <parameter name="activity" value="ApiDemos"/>
+        <classes>
+            <class name="tests.ApiDemosTest"/>
+        </classes>
+    </test>
+
+    <!-- device only -->
+    <test name="BuiltInAppDeviceTest" enabled="false">
+        <parameter name="version" value="10"/>
+        <parameter name="pack" value="com.appcargo.driver"/>
+        <parameter name="activity" value="MainActivity"/>
+        <classes>
+            <class name="tests.BuiltInAppDeviceTest"/>
+        </classes>
+    </test>
+
+    <!-- emu only -->
+    <test name="BuiltInAppEmuTest" enabled="false">
+        <parameter name="version" value="9"/>
+        <parameter name="avd" value="Pixel_XL_API_28"/>
+        <parameter name="pack" value="com.android.calculator2"/>
+        <parameter name="activity" value="Calculator"/>
+        <classes>
+            <class name="tests.BuiltInAppEmuTest"/>
+        </classes>
+    </test>
+
+    <!-- emu only -->
+    <test name="SendSmsTest">
+        <parameter name="version" value="9"/>
+        <parameter name="avd" value="Pixel_XL_API_28"/>
+        <parameter name="pack" value="com.google.android.apps.messaging"/>
+        <parameter name="activity" value="ui.ConversationListActivity"/>
+        <classes>
+            <class name="tests.SendSmsTest"/>
+        </classes>
+    </test>
+</suite>

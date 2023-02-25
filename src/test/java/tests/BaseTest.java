@@ -1,19 +1,15 @@
 package tests;
 
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
-import org.testng.annotations.AfterClass;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeClass;
-import org.testng.annotations.BeforeTest;
+import org.testng.annotations.*;
 
 public class BaseTest {
 
-    protected AppiumDriver driver;
+    protected AndroidDriver driver;
     private AppiumDriverLocalService service;
 
     @BeforeTest
@@ -26,18 +22,20 @@ public class BaseTest {
         service.start();
     }
 
-    @BeforeClass
-    public void setUp() {
+    @BeforeMethod
+    @Parameters({"version", "avd", "pack", "activity"})
+    public void setUp(String version, String avd, String pack, String activity) {
         UiAutomator2Options options = new UiAutomator2Options()
                 .setPlatformName("Android")
-                .setPlatformVersion("10")
-                .setAppPackage("io.appium.android.apis")
-                .setAppActivity("ApiDemos")
+                .setPlatformVersion(version)
+                .setAvd(avd)
+                .setAppPackage(pack)
+                .setAppActivity(activity)
                 .setNoReset(true);
         driver = new AndroidDriver(service.getUrl(), options);
     }
 
-    @AfterClass
+    @AfterMethod
     public void tearDown() {
         driver.quit();
     }
@@ -45,6 +43,5 @@ public class BaseTest {
     @AfterTest
     public void stopServer() {
         service.stop();
-
     }
 }

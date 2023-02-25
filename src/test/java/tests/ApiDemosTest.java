@@ -1,38 +1,53 @@
 package tests;
 
 import io.appium.java_client.AppiumBy;
-import io.appium.java_client.AppiumDriver;
-import io.appium.java_client.android.AndroidDriver;
-import java.net.MalformedURLException;
-import java.net.URL;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
+import io.appium.java_client.TouchAction;
+import io.appium.java_client.touch.offset.ElementOption;
+import io.appium.java_client.touch.offset.PointOption;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebElement;
 import org.testng.annotations.Test;
 
-public class ApiDemosTest {
+public class ApiDemosTest extends BaseTest {
 
-    AppiumDriver driver;
+    @Test
+    public void dragAndDrop() {
+        driver.findElement(AppiumBy.accessibilityId("Views")).click();
+        driver.findElement(AppiumBy.accessibilityId("Drag and Drop")).click();
 
-    @BeforeTest
-    public void setUp() throws MalformedURLException {
-        DesiredCapabilities caps = new DesiredCapabilities();
-        caps.setCapability("platformName", "Android");
-        caps.setCapability("platformVersion", "10"); // "9" for emu
-//        caps.setCapability("deviceName", "Redmi 7A");
-        caps.setCapability("automationName", "UIAutomator2");
-        caps.setCapability("app", System.getProperty("user.dir") + "/apps/ApiDemos-debug.apk");
-        caps.setCapability("noReset", "true"); // for physical device (skips permissions' prompt)
-        driver = new AndroidDriver(new URL("http://localhost:4723/wd/hub"), caps);
+        var actions = new TouchAction<>(driver);
+
+        var drag = ElementOption.element(driver.findElement(By.id("drag_dot_1")));
+        var drop = ElementOption.element(driver.findElement(By.id("drag_dot_2")));
+
+        actions.longPress(drag)
+                .waitAction().moveTo(drop)
+                .release()
+                .perform();
     }
 
     @Test
-    public void clickAppButton() {
-        driver.findElement(AppiumBy.accessibilityId("App")).click();
+    public void scroll() {
+        driver.findElement(AppiumBy.accessibilityId("Views")).click();
+        driver.findElement(AppiumBy.androidUIAutomator(
+                ("new UiScrollable(new UiSelector().scrollable(true).index(0))" +
+                        ".scrollIntoView(new UiSelector().text(\"Lists\"))"))).click();
     }
 
-    @AfterTest
-    public void tearDown() {
-        driver.quit();
+    @Test
+    public void swipe() {
+        driver.findElement(AppiumBy.accessibilityId("Views")).click();
+        driver.findElement(AppiumBy.accessibilityId("Gallery")).click();
+        driver.findElement(AppiumBy.accessibilityId("1. Photos")).click();
+
+        var actions = new TouchAction<>(driver);
+
+        WebElement pic1 = driver.findElements(By.className("android.widget.ImageView")).get(0);
+
+        actions.press(ElementOption.element(pic1))
+                .waitAction()
+                .moveTo(PointOption.point(-500, 210))
+                .release()
+                .perform();
     }
 }
