@@ -1,4 +1,4 @@
-package tests;
+package tests.apptests;
 
 import io.appium.java_client.AppiumBy;
 import org.openqa.selenium.WebElement;

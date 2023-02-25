@@ -1,18 +1,15 @@
-package tests;
+package tests.apptests;
 
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.android.AndroidDriver;
 import io.appium.java_client.android.options.UiAutomator2Options;
 import io.appium.java_client.service.local.AppiumDriverLocalService;
 import io.appium.java_client.service.local.AppiumServiceBuilder;
 import io.appium.java_client.service.local.flags.GeneralServerFlag;
-import org.openqa.selenium.By;
-import org.testng.Assert;
 import org.testng.annotations.*;
 
-public class BuiltInAppEmuTest {
+public class BaseTest {
 
-    private AppiumDriver driver;
+    protected AndroidDriver driver;
     private AppiumDriverLocalService service;
 
     @BeforeTest
@@ -25,29 +22,20 @@ public class BuiltInAppEmuTest {
         service.start();
     }
 
-    @BeforeClass
-    public void setUp() {
+    @BeforeMethod
+    @Parameters({"version", "avd", "pack", "activity"})
+    public void setUp(String version, String avd, String pack, String activity) {
         UiAutomator2Options options = new UiAutomator2Options()
                 .setPlatformName("Android")
-                .setPlatformVersion("9")
-                .setAvd("Pixel_XL_API_28")
-                // install and run Apk Info on emu/device,
-                // choose the app from list and copy package/activity
-                .setAppPackage("com.android.calculator2")
-                .setAppActivity("Calculator");
+                .setPlatformVersion(version)
+                .setAvd(avd)
+                .setAppPackage(pack)
+                .setAppActivity(activity)
+                .setNoReset(true);
         driver = new AndroidDriver(service.getUrl(), options);
     }
 
-    @Test
-    public void testAdd() {
-        driver.findElement(By.id("digit_1")).click();
-        driver.findElement(By.id("op_add")).click();
-        driver.findElement(By.id("digit_3")).click();
-        driver.findElement(By.id("eq")).click();
-        Assert.assertEquals(driver.findElement(By.id("result")).getText(), "4");
-    }
-
-    @AfterClass
+    @AfterMethod
     public void tearDown() {
         driver.quit();
     }

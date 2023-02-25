@@ -8,28 +8,30 @@
         <parameter name="pack" value="io.appium.android.apis"/>
         <parameter name="activity" value="ApiDemos"/>
         <classes>
-            <class name="tests.ApiDemosTest"/>
+            <class name="tests.apptests.ApiDemosTest"/>
         </classes>
     </test>
 
     <!-- device only -->
     <test name="BuiltInAppDeviceTest" enabled="false">
         <parameter name="version" value="10"/>
+        <parameter name="avd" value=""/>
         <parameter name="pack" value="com.appcargo.driver"/>
         <parameter name="activity" value="MainActivity"/>
         <classes>
-            <class name="tests.BuiltInAppDeviceTest"/>
+            <class name="tests.apptests.BuiltInAppDeviceTest"/>
         </classes>
     </test>
 
     <!-- emu only -->
     <test name="BuiltInAppEmuTest" enabled="false">
         <parameter name="version" value="9"/>
+        <parameter name="avd" value=""/>
         <parameter name="avd" value="Pixel_XL_API_28"/>
         <parameter name="pack" value="com.android.calculator2"/>
         <parameter name="activity" value="Calculator"/>
         <classes>
-            <class name="tests.BuiltInAppEmuTest"/>
+            <class name="tests.apptests.BuiltInAppEmuTest"/>
         </classes>
     </test>
 
@@ -40,7 +42,7 @@
         <parameter name="pack" value="com.google.android.apps.messaging"/>
         <parameter name="activity" value="ui.ConversationListActivity"/>
         <classes>
-            <class name="tests.SendSmsTest"/>
+            <class name="tests.apptests.SendSmsTest"/>
         </classes>
     </test>
 
@@ -50,7 +52,7 @@
         <parameter name="pack" value="io.selendroid.testapp"/>
         <parameter name="activity" value="HomeScreenActivity"/>
         <classes>
-            <class name="tests.ClipboardTest"/>
+            <class name="tests.apptests.ClipboardTest"/>
         </classes>
     </test>
 </suite>

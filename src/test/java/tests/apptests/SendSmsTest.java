@@ -1,4 +1,4 @@
-package tests;
+package tests.apptests;
 
 import org.testng.annotations.Test;
 
