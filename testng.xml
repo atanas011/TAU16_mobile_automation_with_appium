@@ -2,7 +2,7 @@
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
 <suite name="MobileAutomationWithAppium">
 
-    <test name="ApiDemosTests">
+    <test name="ApiDemosTests" enabled="false">
         <parameter name="version" value="10"/>
         <parameter name="avd" value=""/>
         <parameter name="pack" value="io.appium.android.apis"/>
@@ -75,6 +75,17 @@
         <parameter name="activity" value="HomeScreenActivity"/>
         <classes>
             <class name="tests.webtests.HybridAppTest"/>
+        </classes>
+    </test>
+
+    <test name="ToDoTest">
+        <parameter name="version" value="10"/>
+        <parameter name="avd" value=""/>
+        <parameter name="browser" value=""/>
+        <parameter name="pack" value="com.jeffprod.todo"/>
+        <parameter name="activity" value="ActivityMain"/>
+        <classes>
+            <class name="tests.apptests.ToDoTest"/>
         </classes>
     </test>
 </suite>
